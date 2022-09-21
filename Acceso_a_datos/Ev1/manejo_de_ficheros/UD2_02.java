@@ -4,7 +4,7 @@ import java.io.File;
 
 import javax.imageio.metadata.IIOMetadataFormatImpl;
 
-public class UD2_2 {
+public class UD2_02 {
 
 	public static void main(String[] args) {
 

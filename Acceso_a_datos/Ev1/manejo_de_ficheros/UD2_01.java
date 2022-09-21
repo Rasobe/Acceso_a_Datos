@@ -2,7 +2,7 @@ package manejo_de_ficheros;
 
 import java.io.File;
 
-public class UD2_1 {
+public class UD2_01 {
 
 	public static void main(String[] args) {
 		

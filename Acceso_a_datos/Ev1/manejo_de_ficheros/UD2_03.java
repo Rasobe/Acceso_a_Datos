@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOError;
 import java.io.IOException;
 
-public class UD2_3 {
+public class UD2_03 {
 
 	public static void main(String[] args) {
 
