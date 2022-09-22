@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
 public class UD2_06 {
 
 	static Scanner s = new Scanner(System.in);
-	
+
 	public static void main(String[] args) {
 
 		/**
@@ -22,7 +22,7 @@ public class UD2_06 {
 		 * nombre del fichero como la palabra se deben pasar como argumentos. No
 		 * distinguir mayúsculas/minúsculas. Incluye también tratamiento de excepciones.
 		 */
-		
+
 		try {
 			System.out.print("Pon una palabra a buscar en el texto: ");
 			String palabra_a_buscar = s.next();
@@ -52,7 +52,7 @@ public class UD2_06 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }
