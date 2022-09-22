@@ -35,11 +35,12 @@ public class UD2_05 {
 			System.out.println("Ordenando archivo...");
 			lista.forEach(System.out::println);
 			System.out.println();
-			// Con la función de la línea 33 podemos ordenar las listas que esten formadas obligatoriamente de STRINGS
+			// Con la función de la línea 33 podemos ordenar las listas que esten formadas
+			// obligatoriamente de STRINGS
 			Collections.sort(lista);
 			// Método para recorrer una lista de forma rápida
 			lista.forEach(System.out::println);
-			
+
 			BufferedWriter bw = new BufferedWriter(new FileWriter("ficheros/Ev1/UD2/ej05_sort.txt"));
 			for (String lineaOrdenada : lista) {
 				bw.write(lineaOrdenada);
@@ -47,14 +48,14 @@ public class UD2_05 {
 			}
 			System.out.println("Archivo ordenado y creado correctamente.");
 			bw.close();
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

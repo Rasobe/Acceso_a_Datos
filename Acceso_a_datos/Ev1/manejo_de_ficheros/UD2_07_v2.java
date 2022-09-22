@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Random;
 
 public class UD2_07_v2 {
-	
+
 	public static void main(String[] args) {
 		List<Integer> lista = null;
 		int numero = 0;
-		
+
 		// Creamos el archivo con los 20 números del 1 al 5.
 		try {
 			DataOutputStream dos = new DataOutputStream(new FileOutputStream("ficheros/Ev1/UD2/puntuacion.dat"));
@@ -26,36 +26,37 @@ public class UD2_07_v2 {
 			}
 			dos.close();
 			System.out.println("Archivo creado y escrito correctamente.");
-			
+
 			// Leemos el archivo anteriormente creado.
 			DataInputStream dis = new DataInputStream(new FileInputStream("ficheros/Ev1/UD2/puntuacion.dat"));
 			lista = new ArrayList<>();
 			while (true) {
 				lista.add(dis.readInt());
 			}
-			
+
 		} catch (IOException e) {
 		}
-		
+
 		// Imprimimos todos los números del archivo
-					System.out.println("\nImprimiendo todos los números... \n");
-					// lista.forEach(System.out::println); 										<--	Esta forma es la más rápida para imprimir List.
-					for (Integer num: lista) {
-						System.out.print(num + " ");
-					}
-					System.out.println("\n");	// Separador
-					
-					// Aquí vemos cuántas veces sale cada número y lo imprimimos por pantalla.
-					int contador;
-					for (int i = 1; i <= 5; i++) {
-						contador = 0;
-						for (Integer num : lista) {
-							if (num == i) {
-								contador++;
-							}
-						}
-						System.out.println("El número " + i + " se repite " + contador + " veces.");
-					}
+		System.out.println("\nImprimiendo todos los números... \n");
+		// lista.forEach(System.out::println); <-- Esta forma es la más rápida para
+		// imprimir List.
+		for (Integer num : lista) {
+			System.out.print(num + " ");
+		}
+		System.out.println("\n"); // Separador
+
+		// Aquí vemos cuántas veces sale cada número y lo imprimimos por pantalla.
+		int contador;
+		for (int i = 1; i <= 5; i++) {
+			contador = 0;
+			for (Integer num : lista) {
+				if (num == i) {
+					contador++;
+				}
+			}
+			System.out.println("El número " + i + " se repite " + contador + " veces.");
+		}
 	}
 
 }

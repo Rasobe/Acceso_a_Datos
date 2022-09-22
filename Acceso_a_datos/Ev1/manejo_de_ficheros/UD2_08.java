@@ -25,22 +25,22 @@ public class UD2_08 {
 		 * de finalizar el código se recorrerá el fichero para visualizar su contenido.
 		 * Prueba varias veces la ejecución de la clase.
 		 */
-		
+
 		Scanner s = new Scanner(System.in);
 		System.out.print("Introduce la cantidad de profes que quieres escribir: ");
 		List<Profesor> lista = new ArrayList<>();
 		String num_profes = s.next();
-		
+
 		// Comprobamos si ha puesto una cantidad correcta.
 		while (!num_profes.matches("[0-9]*")) {
 			System.out.println("Introduce una cantidad de profesores válida: ");
 			num_profes = s.next();
 		}
-		
+
 		for (int i = 0; i < Integer.valueOf(num_profes); i++) {
 			System.out.print("\nIntroduce el nombre del profesor: ");
 			String nombre = s.next();
-			
+
 			// Comprobamos si es una cadena.
 			while (!nombre.matches("[a-zA-Z]*")) {
 				System.out.println("Introduce un nombre válido: ");
@@ -48,7 +48,7 @@ public class UD2_08 {
 			}
 			System.out.print("Introduce la antigüedad de " + nombre + ": ");
 			String antiguedad = s.next();
-			
+
 			// Comprobamos si ha puesto una antigüedad correcta.
 			while (!antiguedad.matches("[0-9]*")) {
 				System.out.println("Introduce una antigüedad válida: ");
@@ -56,9 +56,9 @@ public class UD2_08 {
 			}
 			lista.add(new Profesor(nombre, Integer.valueOf(antiguedad)));
 		}
-		
+
 		lista.forEach(System.out::println);
-		
+
 		File f = new File("ficheros/Ev1/UD2/antiguedad_obj.dat");
 		if (!f.exists()) {
 			System.out.println("Creando archivo...");
@@ -73,7 +73,7 @@ public class UD2_08 {
 				e.printStackTrace();
 			}
 		} else {
-			
+
 		}
 
 	}

@@ -9,8 +9,9 @@ public class MiObjectOutputStream extends ObjectOutputStream {
 	protected MiObjectOutputStream(OutputStream arg0) throws IOException, SecurityException {
 		super(arg0);
 	}
-	
+
 	// Sobrescritura del método
-	protected void writeStreamHeader() throws IOException { }
-	
+	protected void writeStreamHeader() throws IOException {
+	}
+
 }

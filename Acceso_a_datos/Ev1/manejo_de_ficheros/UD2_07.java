@@ -28,7 +28,7 @@ public class UD2_07 {
 			}
 			bw.close();
 			System.out.println("Archivo creado y escrito correctamente.");
-			
+
 			// Leemos el archivo anteriormente creado.
 			BufferedReader br = new BufferedReader(new FileReader("Acceso_a_datos/ficheros/Ev1/UD2/puntuacion.dat"));
 			String linea = "";
@@ -36,15 +36,16 @@ public class UD2_07 {
 			while ((linea = br.readLine()) != null) {
 				lista.add(linea);
 			}
-			
+
 			// Imprimimos todos los números del archivo
 			System.out.println("\nImprimiendo todos los números... \n");
-			// lista.forEach(System.out::println); 										<--	Esta forma es la más rápida para imprimir List.
+			// lista.forEach(System.out::println); <-- Esta forma es la más rápida para
+			// imprimir List.
 			for (String numero : lista) {
 				System.out.print(numero + " ");
 			}
-			System.out.println("\n");	// Separador
-			
+			System.out.println("\n"); // Separador
+
 			// Aquí vemos cuántas veces sale cada número y lo imprimimos por pantalla.
 			int contador;
 			for (int i = 1; i <= 5; i++) {
@@ -56,7 +57,7 @@ public class UD2_07 {
 				}
 				System.out.println("El número " + i + " se repite " + contador + " veces.");
 			}
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

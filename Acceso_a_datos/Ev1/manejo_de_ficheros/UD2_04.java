@@ -20,12 +20,13 @@ public class UD2_04 {
 		BufferedWriter bw = new BufferedWriter(new FileWriter("ficheros/Ev1/UD2/pares.txt"));
 		for (int i = 2; i < 500; i++) {
 			if (i % 2 == 0) {
-				bw.write(String.valueOf(i));	// Convertimos el número entero en cadena para que al leer el fichero, se pueda leer correctamente
+				bw.write(String.valueOf(i)); // Convertimos el número entero en cadena para que al leer el fichero, se
+												// pueda leer correctamente
 				bw.newLine();
 			}
 		}
 		bw.close();
-		
+
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("ficheros/Ev1/UD2/pares.txt"));
 			String linea;
