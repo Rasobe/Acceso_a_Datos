@@ -1,14 +1,14 @@
 package manejo_de_ficheros;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import objetos.Profesor;
 
@@ -32,7 +32,7 @@ public class UD2_08 {
 		String num_profes = s.next();
 
 		// Comprobamos si ha puesto una cantidad correcta.
-		while (!num_profes.matches("[0-9]*")) {
+		while (!num_profes.matches("[0-9]+")) {
 			System.out.println("Introduce una cantidad de profesores válida: ");
 			num_profes = s.next();
 		}
@@ -42,7 +42,7 @@ public class UD2_08 {
 			String nombre = s.next();
 
 			// Comprobamos si es una cadena.
-			while (!nombre.matches("[a-zA-Z]*")) {
+			while (!nombre.matches("[a-zA-Z]+")) {
 				System.out.println("Introduce un nombre válido: ");
 				nombre = s.next();
 			}
@@ -50,17 +50,15 @@ public class UD2_08 {
 			String antiguedad = s.next();
 
 			// Comprobamos si ha puesto una antigüedad correcta.
-			while (!antiguedad.matches("[0-9]*")) {
+			while (!antiguedad.matches("[0-9]{1,2}")) {
 				System.out.println("Introduce una antigüedad válida: ");
 				antiguedad = s.next();
 			}
 			lista.add(new Profesor(nombre, Integer.valueOf(antiguedad)));
 		}
 
-		lista.forEach(System.out::println);
-
 		File f = new File("ficheros/Ev1/UD2/antiguedad_obj.dat");
-		if (!f.exists()) {
+		if (!f.exists()) { // Si el archivo NO existe...
 			System.out.println("Creando archivo...");
 			try {
 				f.createNewFile();
@@ -72,8 +70,31 @@ public class UD2_08 {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} else {
-
+		} else { // Si el archivo existe...
+						
+			// Escribimos los nuevos profesores al final de la lista
+			
+			try {
+				FileOutputStream fos = new FileOutputStream(f, true);
+				MiObjectOutputStream moos = new MiObjectOutputStream(fos);
+				for (Profesor profesor : lista) {
+					moos.writeObject(profesor);
+				}
+				moos.close();
+			} catch (IOException e) {
+			}
+			
+			// Imprimimos la lista nueva de profesores una vez hemos implementado todos los profesores.
+			
+			List<Profesor> lista_profesores_archivo = new ArrayList<>();
+			try {
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+				while (true) {
+					System.out.println(ois.readObject());
+				}
+			} catch (IOException e) {
+			} catch (ClassNotFoundException e) {
+			}
 		}
 
 	}

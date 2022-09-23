@@ -16,7 +16,7 @@ public class UD2_07 {
 
 		// Creamos el archivo con los 20 números del 1 al 5.
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter("Acceso_a_datos/ficheros/Ev1/UD2/puntuacion.dat"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("ficheros/Ev1/UD2/puntuacion.dat"));
 			// Random nos genera números aleatorios desde el 1 hasta el 5 incluidos los dos.
 			// Ya que si no ponemos el +1 de la línea 18, nos saldrían números del 0 al 4.
 			Random r = new Random();
@@ -30,7 +30,7 @@ public class UD2_07 {
 			System.out.println("Archivo creado y escrito correctamente.");
 
 			// Leemos el archivo anteriormente creado.
-			BufferedReader br = new BufferedReader(new FileReader("Acceso_a_datos/ficheros/Ev1/UD2/puntuacion.dat"));
+			BufferedReader br = new BufferedReader(new FileReader("ficheros/Ev1/UD2/puntuacion.dat"));
 			String linea = "";
 			List<String> lista = new ArrayList<>();
 			while ((linea = br.readLine()) != null) {
