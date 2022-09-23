@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class UD2_06_texto_junto {
 
 	public static void main(String[] args) {
-		
+
 		/**
 		 * UD2.6 Realiza una clase UD2_6 que indique cuántas veces aparece una palabra
 		 * dentro de un fichero de texto (puedes crearlo con el bloc de notas). Tanto el
@@ -28,10 +28,30 @@ public class UD2_06_texto_junto {
 			String linea = "";
 			int contador = 0;
 			int posicion_caracter = 0;
+
+			// Leemos línea a línea el archivo que hemos escrito anteriormente.
 			while ((linea = br.readLine()) != null) {
+
+				/**
+				 * Recorremos toda la línea desde el principio hasta el final para ver cuántas
+				 * palabras hay en dicha línea.
+				 */
+
 				for (int i = 0; i < linea.length(); i++) {
+
+					/**
+					 * Si en la línea substraida, localizamos la palabra a buscar, nos dará la
+					 * posición del primer carácter de la palabra.
+					 */
+
 					if ((posicion_caracter = linea.toLowerCase().indexOf(palabra_a_buscar.toLowerCase())) != -1) {
 						contador++;
+
+						/**
+						 * Sobre ponemos la nueva líena a la anterior a partir del segundo carácter de
+						 * la palabra encontrada hasta el final
+						 */
+						
 						linea = linea.substring(posicion_caracter + 1, linea.length());
 					}
 				}
