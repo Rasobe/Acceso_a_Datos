@@ -2,21 +2,22 @@ package manejo_de_ficheros;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.StringTokenizer;
 
 public class UD2_07_v1 {
 
 	public static void main(String[] args) {
 
+		File f = new File("ficheros/Ev1/UD2/puntuacion.dat");
 		// Creamos el archivo con los 20 números del 1 al 5.
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter("ficheros/Ev1/UD2/puntuacion.dat"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(f));
 			// Random nos genera números aleatorios desde el 1 hasta el 5 incluidos los dos.
 			// Ya que si no ponemos el +1 de la línea 18, nos saldrían números del 0 al 4.
 			Random r = new Random();
@@ -30,7 +31,7 @@ public class UD2_07_v1 {
 			System.out.println("Archivo creado y escrito correctamente.");
 
 			// Leemos el archivo anteriormente creado.
-			BufferedReader br = new BufferedReader(new FileReader("ficheros/Ev1/UD2/puntuacion.dat"));
+			BufferedReader br = new BufferedReader(new FileReader(f));
 			String linea = "";
 			List<String> lista = new ArrayList<>();
 			while ((linea = br.readLine()) != null) {
