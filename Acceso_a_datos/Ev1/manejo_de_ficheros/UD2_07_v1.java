@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.StringTokenizer;
 
-public class UD2_07 {
+public class UD2_07_v1 {
 
 	public static void main(String[] args) {
 

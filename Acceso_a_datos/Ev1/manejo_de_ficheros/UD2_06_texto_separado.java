@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class UD2_06 {
+public class UD2_06_texto_separado {
 
 	static Scanner s = new Scanner(System.in);
 
@@ -26,7 +26,7 @@ public class UD2_06 {
 		try {
 			System.out.print("Pon una palabra a buscar en el texto: ");
 			String palabra_a_buscar = s.next();
-			BufferedReader br = new BufferedReader(new FileReader("ficheros/Ev1/UD2/ej06.txt"));
+			BufferedReader br = new BufferedReader(new FileReader("ficheros/Ev1/UD2/ej06_separado.txt"));
 			String linea;
 			String texto = "";
 			int contador = 0;
