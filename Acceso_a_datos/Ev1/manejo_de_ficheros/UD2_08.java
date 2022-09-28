@@ -57,7 +57,7 @@ public class UD2_08 {
 			lista.add(new Profesor(nombre, Integer.valueOf(antiguedad)));
 		}
 
-		File f = new File("ficheros/Ev1/UD2/antiguedad_obj.dat");
+		File f = new File("Acceso_a_datos/ficheros/Ev1/UD2/antiguedad_obj.dat");
 		if (!f.exists()) { // Si el archivo NO existe...
 			System.out.println("Creando archivo...");
 			try {

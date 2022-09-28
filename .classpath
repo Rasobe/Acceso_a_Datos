@@ -2,5 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_341"/>
 	<classpathentry kind="src" path="Acceso_a_datos/Ev1"/>
+	<classpathentry kind="lib" path="Acceso_a_datos/Librerias/kxml2-2.3.0.jar"/>
+	<classpathentry kind="lib" path="Acceso_a_datos/Librerias/xstream-1.4.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
