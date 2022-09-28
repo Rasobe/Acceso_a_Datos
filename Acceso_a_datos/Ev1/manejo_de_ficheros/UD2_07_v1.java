@@ -14,6 +14,14 @@ public class UD2_07_v1 {
 
 	public static void main(String[] args) {
 
+		/**
+		 * UD2.7 Realiza una clase UD2_7 que guarde 20 números enteros aleatorios
+		 * comprendidos entre 1 y 5 en el fichero puntuación.dat. Completa el código
+		 * abriendo el fichero para visualizarlos todos por la consola indicando al
+		 * final cuántas veces se repiten cada uno de ellos. Incluye también tratamiento
+		 * de excepciones.
+		 */
+
 		File f = new File("ficheros/Ev1/UD2/puntuacion.dat");
 		// Creamos el archivo con los 20 números del 1 al 5.
 		try {

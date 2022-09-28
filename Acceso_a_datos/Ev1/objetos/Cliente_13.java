@@ -2,7 +2,7 @@ package objetos;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable {
+public class Cliente_13 implements Serializable {
 
 	private String nombre_completo;
 	private String telefono;
@@ -10,7 +10,7 @@ public class Cliente implements Serializable {
 	private String nif;
 	private transient String moroso;	// con transient lo que hacemos es que al querer serializar la clase, no se serializará
 
-	public Cliente(String nombre_completo, String telefono, String direccion, String nif, String moroso) {
+	public Cliente_13(String nombre_completo, String telefono, String direccion, String nif, String moroso) {
 		super();
 		this.nombre_completo = nombre_completo;
 		this.telefono = telefono;
@@ -61,8 +61,8 @@ public class Cliente implements Serializable {
 
 	@Override
 	public String toString() {
-		return "\nNombre completo: " + nombre_completo + "\nTeléfono=" + telefono + "\nDireccion: " + direccion
-				+ "\nNIF=" + nif + ", moroso=" + moroso + "]";
+		return "\nNombre completo: " + nombre_completo + "\nTeléfono: " + telefono + "\nDireccion: " + direccion
+				+ "\nNIF: " + nif + "\nmoroso: " + moroso;
 	}
 
 }

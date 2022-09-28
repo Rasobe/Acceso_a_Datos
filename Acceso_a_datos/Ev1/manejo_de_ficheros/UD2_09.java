@@ -18,9 +18,13 @@ public class UD2_09 {
 		 * identificador del profesor y lo borre del fichero ProfesFPSierraGuara.dat.
 		 * Borrar un dato simplemente consiste en poner su campo id dentro del fichero a
 		 * 0 para indicar que ese registro no existe y su posición está libre. Se deberá
-		 * controlar que: - El identificador del profesor esté dentro de los límites del
-		 * fichero. - El identificador del profesor debe existir. Si ha sido borrado
-		 * previamente se advertirá de la situación. - Antes de finalizar el código
+		 * controlar que: 
+		 * 
+		 * 	- El identificador del profesor esté dentro de los límites del
+		 * fichero. 
+		 * 	- El identificador del profesor debe existir. Si ha sido borrado
+		 * previamente se advertirá de la situación. 
+		 * 	- Antes de finalizar el código
 		 * visualizar de manera secuencial todos los registros del fichero para
 		 * comprobar la operación.
 		 */

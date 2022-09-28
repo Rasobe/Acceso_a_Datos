@@ -13,6 +13,15 @@ import java.util.Random;
 public class UD2_07_v2 {
 
 	public static void main(String[] args) {
+
+		/**
+		 * UD2.7 Realiza una clase UD2_7 que guarde 20 números enteros aleatorios
+		 * comprendidos entre 1 y 5 en el fichero puntuación.dat. Completa el código
+		 * abriendo el fichero para visualizarlos todos por la consola indicando al
+		 * final cuántas veces se repiten cada uno de ellos. Incluye también tratamiento
+		 * de excepciones.
+		 */
+
 		List<Integer> lista = null;
 		int numero = 0;
 		int numero_random_hasta = 5;
