@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="Ev1"/>
 	<classpathentry kind="lib" path="Librerias/kxml2-2.3.0.jar"/>
 	<classpathentry kind="lib" path="Librerias/xstream-1.4.2.jar"/>
+	<classpathentry kind="lib" path="Librerias/gson-2.8.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
