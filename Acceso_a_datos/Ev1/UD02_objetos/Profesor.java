@@ -1,4 +1,4 @@
-package objetos;
+package UD02_objetos;
 
 import java.io.Serializable;
 

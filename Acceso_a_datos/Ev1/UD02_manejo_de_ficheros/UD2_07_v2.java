@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -25,7 +25,7 @@ public class UD2_07_v2 {
 		List<Integer> lista = null;
 		int numero = 0;
 		int numero_random_hasta = 5;
-		File f = new File("Acceso_a_datos/ficheros/Ev1/UD2/puntuacion.dat");
+		File f = new File("Acceso_a_datos/ficheros/Ev1/UD02/puntuacion.dat");
 
 		// Creamos el archivo con los 20 números del 1 al 5.
 		try {

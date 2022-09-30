@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 
-import objetos.Pelicula;
+import UD02_objetos.Pelicula;
 
 public class UD2_11_crear_archivo_v2 {
 
@@ -31,7 +31,7 @@ try {
 			
 			// Creamos un FileWriter para escribir el archivo JSON de la siguiente manera.
 			
-			FileWriter fw = new FileWriter("ficheros/Ev1/UD2/ej11.json");
+			FileWriter fw = new FileWriter("ficheros/Ev1/UD02/ej11.json");
 			gson.toJson(peliculas, fw);
 			fw.close();
 			System.out.println("Archivo creado correctamente!");

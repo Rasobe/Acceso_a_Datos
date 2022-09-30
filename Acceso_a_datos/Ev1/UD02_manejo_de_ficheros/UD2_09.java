@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,7 +40,7 @@ public class UD2_09 {
 			id = s.next();
 		}
 
-		File f = new File("ficheros/Ev1/UD2/ProfesFPSierraGuara.dat");
+		File f = new File("ficheros/Ev1/UD02/ProfesFPSierraGuara.dat");
 		try {
 
 			/**

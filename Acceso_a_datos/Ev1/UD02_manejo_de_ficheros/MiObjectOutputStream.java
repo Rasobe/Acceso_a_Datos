@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

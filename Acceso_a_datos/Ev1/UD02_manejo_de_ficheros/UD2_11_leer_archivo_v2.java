@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,7 +15,7 @@ public class UD2_11_leer_archivo_v2 {
 
 		try {
 
-			String fichero = new String(Files.readAllBytes(Paths.get("ficheros/Ev1/UD2/ej11.json")));
+			String fichero = new String(Files.readAllBytes(Paths.get("ficheros/Ev1/UD02/ej11.json")));
 			// Parseamos el string para que no salga deprecated.
 			JsonArray peliculas = JsonParser.parseString(fichero).getAsJsonArray();
 

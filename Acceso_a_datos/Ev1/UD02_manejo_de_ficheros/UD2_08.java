@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import objetos.Profesor;
+import UD02_objetos.Profesor;
 
 public class UD2_08 {
 
@@ -57,7 +57,7 @@ public class UD2_08 {
 			lista.add(new Profesor(nombre, Integer.valueOf(antiguedad)));
 		}
 
-		File f = new File("Acceso_a_datos/ficheros/Ev1/UD2/antiguedad_obj.dat");
+		File f = new File("Acceso_a_datos/ficheros/Ev1/UD02/antiguedad_obj.dat");
 		if (!f.exists()) { // Si el archivo NO existe...
 			System.out.println("Creando archivo...");
 			try {

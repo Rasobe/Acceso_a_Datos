@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.thoughtworks.xstream.XStream;
 
-import objetos.Pelicula;
+import UD02_objetos.Pelicula;
 
 public class UD2_10 {
 
@@ -29,7 +29,7 @@ public class UD2_10 {
 		try {
 			xs.alias("Peliculas", List.class);
 			xs.alias("Pelicula", Pelicula.class);
-			xs.toXML(peliculas, new FileOutputStream("ficheros/Ev1/UD2/ej10.xml"));
+			xs.toXML(peliculas, new FileOutputStream("ficheros/Ev1/UD02/ej10.xml"));
 			System.out.println("Creando archivo...");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -40,7 +40,7 @@ public class UD2_10 {
 		try {
 			xs.alias("Peliculas", List.class);
 			xs.alias("Pelicula", Pelicula.class);
-			lista_desde_xml = (List<Pelicula>) xs.fromXML(new FileInputStream("ficheros/Ev1/UD2/ej10.xml"));
+			lista_desde_xml = (List<Pelicula>) xs.fromXML(new FileInputStream("ficheros/Ev1/UD02/ej10.xml"));
 
 			lista_desde_xml.forEach(System.out::println);
 

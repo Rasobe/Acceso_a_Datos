@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -25,7 +25,7 @@ public class UD2_05 {
 
 		try {
 			System.out.println("Leyendo archivo...");
-			BufferedReader br = new BufferedReader(new FileReader("ficheros/Ev1/UD2/ej05.txt"));
+			BufferedReader br = new BufferedReader(new FileReader("ficheros/Ev1/UD02/ej05.txt"));
 			String linea;
 			List<String> lista = new ArrayList<>();
 			while ((linea = br.readLine()) != null) {
@@ -41,7 +41,7 @@ public class UD2_05 {
 			// Método para recorrer una lista de forma rápida
 			lista.forEach(System.out::println);
 
-			BufferedWriter bw = new BufferedWriter(new FileWriter("ficheros/Ev1/UD2/ej05_sort.txt"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("ficheros/Ev1/UD02/ej05_sort.txt"));
 			for (String lineaOrdenada : lista) {
 				bw.write(lineaOrdenada);
 				bw.newLine();

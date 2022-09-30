@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,7 +22,7 @@ public class UD2_07_v1 {
 		 * de excepciones.
 		 */
 
-		File f = new File("ficheros/Ev1/UD2/puntuacion.dat");
+		File f = new File("ficheros/Ev1/UD02/puntuacion.dat");
 		// Creamos el archivo con los 20 números del 1 al 5.
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(f));

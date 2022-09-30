@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -26,7 +26,7 @@ public class UD2_06_texto_separado {
 		try {
 			System.out.print("Pon una palabra a buscar en el texto: ");
 			String palabra_a_buscar = s.next();
-			BufferedReader br = new BufferedReader(new FileReader("ficheros/Ev1/UD2/ej06_separado.txt"));
+			BufferedReader br = new BufferedReader(new FileReader("ficheros/Ev1/UD02/ej06_separado.txt"));
 			String linea;
 			String texto = "";
 			int contador = 0;

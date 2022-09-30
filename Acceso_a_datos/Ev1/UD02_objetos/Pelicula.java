@@ -1,4 +1,4 @@
-package objetos;
+package UD02_objetos;
 
 public class Pelicula {
 

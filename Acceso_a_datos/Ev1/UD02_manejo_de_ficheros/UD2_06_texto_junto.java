@@ -1,4 +1,4 @@
-package manejo_de_ficheros;
+package UD02_manejo_de_ficheros;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,7 +21,7 @@ public class UD2_06_texto_junto {
 		Scanner s = new Scanner(System.in);
 		System.out.print("Introduce la palabra a buscar: ");
 		String palabra_a_buscar = s.next();
-		File f = new File("ficheros/Ev1/UD2/ej06_junto.txt");
+		File f = new File("ficheros/Ev1/UD02/ej06_junto.txt");
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(f));
