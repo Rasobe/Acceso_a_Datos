@@ -42,7 +42,7 @@ public class UD03_01_baloncesto {
 			FileWriter fw = new FileWriter("ficheros/Ev1/UD03/ej01_baloncesto_socios.json");
 			gson.toJson(lista, fw);
 			fw.close();
-			System.out.println("Archivo json creado correctamente!");
+			System.out.println("¡Archivo json creado correctamente!");
 			
 			
 		} catch (SQLException e) {
