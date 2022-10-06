@@ -95,10 +95,10 @@ public class AccesoBdatos {
 	
 	public int anyadirSocio(String nombre, int estatura, int edad, String localidad) {
 		
-		ultimaIdDisponible();
+		PreparedStatement ps;
 		
 		try {
-			PreparedStatement ps = conecta.prepareStatement("insert into socio values (?, ?, ?, ?, ?)");
+			ps = conecta.prepareStatement("insert into socio values (?, ?, ?, ?, ?)");
 			ps.setInt(1, ultimaIdDisponible());
 			ps.setString(2, nombre);
 			ps.setInt(3, estatura);
@@ -116,11 +116,13 @@ public class AccesoBdatos {
 		PreparedStatement ps;
 		ResultSet rs;
 		try {
-			ps = conecta.prepareStatement("SELECT socioID FROM baloncesto.socio order by socioID desc limit 1");
+			ps = conecta.prepareStatement("SELECT socioID FROM socio order by socioID desc limit 1");
 			rs = ps.executeQuery();
-			if (rs.next()) {
+			
+			if(rs.next()) {
 				id = rs.getInt(1);
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -159,7 +161,7 @@ public class AccesoBdatos {
 			
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 
