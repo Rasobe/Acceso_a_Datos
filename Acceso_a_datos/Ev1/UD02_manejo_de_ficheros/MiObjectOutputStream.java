@@ -6,7 +6,7 @@ import java.io.OutputStream;
 
 public class MiObjectOutputStream extends ObjectOutputStream {
 
-	protected MiObjectOutputStream(OutputStream arg0) throws IOException, SecurityException {
+	public MiObjectOutputStream(OutputStream arg0) throws IOException, SecurityException {
 		super(arg0);
 	}
 

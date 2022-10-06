@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import UD02_manejo_de_ficheros.MiObjectOutputStream;
 import UD02_objetos.Profesor;
 
 public class ej08 {
@@ -53,7 +54,13 @@ public class ej08 {
 				}
 				System.out.println("Archivo creado con éxito!");
 			} else {
+				FileOutputStream fos = new FileOutputStream(f, true);
+				MiObjectOutputStream moos = new MiObjectOutputStream(fos);
 				
+				for (Profesor profesor : lista) {
+					moos.writeObject(profesor);
+				}
+				moos.close();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
