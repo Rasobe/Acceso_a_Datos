@@ -23,7 +23,7 @@ public class ej11 {
 		 * UD2.11 Crea un paquete de nombre UD2_11 e incluye en él todas las clases
 		 * necesarias para crear en disco un fichero JSON con la información que aparece
 		 * en el ejercicio anterior. Incluye también las dos clases que recorren el
-		 * documento JSON creado que se han explicado en los materiales.
+		 * documento JSON creado que se han explicado en los materiales...
 		 */
 
 		List<Pelicula> peliculas = new ArrayList<>();
