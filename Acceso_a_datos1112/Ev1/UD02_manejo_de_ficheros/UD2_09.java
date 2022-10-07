@@ -75,7 +75,7 @@ public class UD2_09 {
 
 			System.out.println("ID    Profesor    Departamento    Antigüedad");
 			
-			while (archivo.getFilePointer() < archivo.length()) {
+			while (archivo.getFilePointer() != archivo.length()) {
 				//	archivo.seek(0); nos volvemos a posicionar en el inicio pero esto no haría falta
 				id_profesor = archivo.readInt();	// obtenemos el ID del profesor
 				for (int i = 0; i < profesores.length; i++) {

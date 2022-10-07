@@ -75,8 +75,7 @@ public class UD2_08 {
 			// Escribimos los nuevos profesores al final de la lista
 			
 			try {
-				FileOutputStream fos = new FileOutputStream(f, true);
-				MiObjectOutputStream moos = new MiObjectOutputStream(fos);
+				MiObjectOutputStream moos = new MiObjectOutputStream(new FileOutputStream(f, true));
 				for (Profesor profesor : lista) {
 					moos.writeObject(profesor);
 				}

@@ -34,7 +34,7 @@ public class ej09 {
 
 		// Escribimos los profesores
 
-		File f = new File("Acceso_a_datos/ficheros/Ev1/UD02/repaso_ej09.txt");
+		File f = new File("ficheros/Ev1/UD02/repaso_ej09.txt");
 		RandomAccessFile raf = new RandomAccessFile(f, "rw");
 		StringBuffer sb;
 

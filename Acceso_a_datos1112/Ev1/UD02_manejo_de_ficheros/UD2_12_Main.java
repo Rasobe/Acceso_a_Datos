@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class UD2_12_Main {
 
@@ -20,44 +22,44 @@ public class UD2_12_Main {
 		 * en caso contrario se indicará y finalizará su ejecución.
 		 */
 
-//		if (args.length == 0) {
-//			System.out.println("No se ha recibido ningun argumento");
-//			System.exit(0);
-//		} else {
-//			File directorio = new File(args[0]);
-//			// Creo una lista filtrandola por el valor de args[1]
-//			File[] lista = directorio.listFiles(new FilenameFilter() {
-//				@Override
-//				public boolean accept(File file, String name) {
-//					// TODO Auto-generated method stub
-//					if (name.endsWith(args[1])) {
-//						return true;
-//					}
-//					return false;
-//				}
-//
-//			});
-//
-//			for (File fichero : lista) {
-//
-//				System.out.println("Nombre:\t" + fichero.getName());
-//				System.out.println("Tamaño:\t" + fichero.length() + " bytes");
-//
-//
-		// Para sacar fecha de creacion del archivo
-		
-		File my_file = new File("C:\\Users\\rasob\\Desktop\\Juegos");
-		
-		BasicFileAttributes file_att = null;
-		
-		try {
-			file_att = Files.readAttributes(my_file.toPath(), BasicFileAttributes.class);
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (args.length == 0) {
+			System.out.println("No se ha recibido ningun argumento!!");
+			System.exit(0);
+		} else {
+			File directorio = new File(args[0]);
+			File[] lista = directorio.listFiles(new FilenameFilter() {
+
+				@Override
+				public boolean accept(File f, String name) {
+					if (name.endsWith(args[1])) {
+						return true;
+					}
+					return false;
+				}
+			});
+			for (File fichero : lista) {
+				System.out.println("Nombre:\t" + fichero.getName());
+				System.out.println("Tamaño:\t" + fichero.length() + " bytes");
+				// Para sacar fecha de creacion del archivo
+				BasicFileAttributes attrs = null;
+				try {
+					attrs = Files.readAttributes(fichero.toPath(), BasicFileAttributes.class);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				FileTime time = attrs.creationTime();
+				// Recibo un timestamp que formateo para sacarlo como fecha y hora
+				String pattern = "dd-MM-yyyy HH:mm:ss";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String formatted = simpleDateFormat.format(new Date(time.toMillis()));
+
+				System.out.println("Creado:\t" + formatted + "\n");
+
+			}
+
+			// else
 		}
-		System.out.printf("File Creation Time %s ", file_att.creationTime());
-			
-		
 
 	}
 

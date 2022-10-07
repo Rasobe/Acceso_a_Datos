@@ -1,7 +1,8 @@
 package UD02_objetos;
 
-public class Pelicula {
+import java.io.Externalizable;
 
+public class Pelicula {
 	int id;
 	String titulo;
 	int anyo;

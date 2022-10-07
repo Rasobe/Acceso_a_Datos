@@ -31,7 +31,7 @@ public class ej10 {
 			// Crear XML
 			xs.alias("Peliculas", List.class);
 			xs.alias("Pelicula", Pelicula.class);
-			xs.toXML(peliculas, new FileOutputStream("Acceso_a_datos/ficheros/Ev1/UD02/repaso_ej10.xml"));
+			xs.toXML(peliculas, new FileOutputStream("ficheros/Ev1/UD02/repaso_ej10.xml"));
 			System.out.println("Archivo creado con éxito");
 			
 			// Leer XML
@@ -39,9 +39,13 @@ public class ej10 {
 			XStream xs2 = new XStream();
 			xs2.alias("Peliculas", List.class);
 			xs2.alias("Pelicula", Pelicula.class);
-			List<Pelicula> lista = (List<Pelicula>) xs2.fromXML(new FileInputStream("Acceso_a_datos/ficheros/Ev1/UD02/repaso_ej10.xml"));
+			List<Pelicula> lista = (List<Pelicula>) xs2.fromXML(new FileInputStream("ficheros/Ev1/UD02/repaso_ej10.xml"));
 			
-			lista.forEach(System.out::println);
+			lista.forEach(f -> { 
+				if (f.getAnyo() < 2022) {
+					System.out.println(f);
+				}
+			});
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

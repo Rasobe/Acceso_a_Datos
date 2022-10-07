@@ -14,43 +14,41 @@ public class UD2_03 {
 		 * el fichero y después el directorio pues no se permite borrar directorios no
 		 * vacíos).
 		 */
-		
-		/**
-		* // CREAR DIRECTORIO Y ARCHIVO
-		* File directorio = new File("C://DAM2");
-		* if (directorio.mkdir()) {
-		* 	 System.out.println("Directorio creado");
-		* } else {
-		* 	 System.out.println("No se pudo crear el directorio");
-		*  	 // Posiblemente exista
-		*	 System.exit(-1);
-		* }
-		* try {
-		*	 File fichero = new File("C://DAM2//Alberto.txt");
-		*	 if (fichero.createNewFile()) {
-		*		 System.out.println("Archivo creado correctamente");
-		*	 } else {
-		*		 System.out.println("No se ha podido crear el archivo");
-		*	 }
-		* } catch (IOException e) {
-		*	 System.out.println("Se produjo el error: " + e.getMessage());
-		* }
-		*/
-		
+
+		// CREAR DIRECTORIO Y ARCHIVO
+		File directorio = new File("C://DAM2");
+		if (directorio.mkdir()) {
+			System.out.println("Directorio creado");
+		} else {
+			System.out.println("No se pudo crear el directorio");
+			// Posiblemente exista
+			System.exit(-1);
+		}
+		try {
+			File fichero = new File("C://DAM2//Alberto.txt");
+			if (fichero.createNewFile()) {
+				System.out.println("Archivo creado correctamente");
+			} else {
+				System.out.println("No se ha podido crear el archivo");
+			}
+		} catch (IOException e) {
+			System.out.println("Se produjo el error: " + e.getMessage());
+		}
+
 		// BORRAR DIRECTORIO Y ARCHIVO
-				File fichero = new File("C://DAM2//Alberto.txt");
-				if (fichero.delete()) {
-					System.out.println("El archivo se ha borrado correctamente");
-				} else {
-					System.out.println("No se ha podido borrar el archivo");
-				}
-				
-				File directorio = new File("C://DAM2");
-				if (directorio.delete()) {
-					System.out.println("Se ha borrado correctamente el directorio");
-				} else {
-					System.out.println("No se ha podido borrar el directorio");
-				}
+		File fichero = new File("C://DAM2//Alberto.txt");
+		if (fichero.delete()) {
+			System.out.println("El archivo se ha borrado correctamente");
+		} else {
+			System.out.println("No se ha podido borrar el archivo");
+		}
+
+		directorio = new File("C://DAM2");
+		if (directorio.delete()) {
+			System.out.println("Se ha borrado correctamente el directorio");
+		} else {
+			System.out.println("No se ha podido borrar el directorio");
+		}
 	}
 
 }

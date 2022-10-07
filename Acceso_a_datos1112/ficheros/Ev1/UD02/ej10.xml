@@ -2,19 +2,19 @@
   <Pelicula>
     <id>1</id>
     <titulo>El señor de los anillos.</titulo>
-    <anyo>2000</anyo>
+    <año>2000</año>
     <descripcion>Gran pelicula, mejor actor.</descripcion>
   </Pelicula>
   <Pelicula>
     <id>2</id>
     <titulo>Cars 4</titulo>
-    <anyo>2022</anyo>
+    <año>2022</año>
     <descripcion>Gran pelicula, mejor coche.</descripcion>
   </Pelicula>
   <Pelicula>
     <id>3</id>
     <titulo>Toy Story 22.</titulo>
-    <anyo>2032</anyo>
+    <año>2032</año>
     <descripcion>Buen muñeco señora.</descripcion>
   </Pelicula>
 </Peliculas>

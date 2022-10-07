@@ -39,7 +39,7 @@ public class UD2_13 {
 
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(
-					new FileOutputStream("Acceso_a_datos/ficheros/Ev1/UD02/ej13.dat"));
+					new FileOutputStream("ficheros/Ev1/UD02/ej13.dat"));
 			oos.writeObject(lista);
 			oos.close();
 			System.out.println("Archivo creado con éxito!");
@@ -53,7 +53,7 @@ public class UD2_13 {
 
 		try {
 			ObjectInputStream ois = new ObjectInputStream(
-					new FileInputStream("Acceso_a_datos/ficheros/Ev1/UD02/ej13.dat"));
+					new FileInputStream("ficheros/Ev1/UD02/ej13.dat"));
 			lista_sacada_fichero = (List<Cliente_13>) ois.readObject();
 			lista_sacada_fichero.forEach(System.out::println);
 		} catch (IOException e) {

@@ -31,7 +31,7 @@ public class ej08 {
 		System.out.println("¿Cuantos profesores quieres crear?");
 		int num = s.nextInt();
 
-		File f = new File("Acceso_a_datos/ficheros/Ev1/UD02/repaso_ej08.1.txt");
+		File f = new File("ficheros/Ev1/UD02/repaso_ej08.1.txt");
 		List<Profesor> lista = new ArrayList<>();
 		String nombre;
 		int antiguedad;

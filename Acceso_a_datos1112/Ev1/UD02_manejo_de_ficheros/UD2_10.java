@@ -29,6 +29,7 @@ public class UD2_10 {
 		try {
 			xs.alias("Peliculas", List.class);
 			xs.alias("Pelicula", Pelicula.class);
+			xs.aliasField("año", Pelicula.class, "anyo");
 			xs.toXML(peliculas, new FileOutputStream("ficheros/Ev1/UD02/ej10.xml"));
 			System.out.println("Creando archivo...");
 		} catch (FileNotFoundException e) {
@@ -40,6 +41,7 @@ public class UD2_10 {
 		try {
 			xs.alias("Peliculas", List.class);
 			xs.alias("Pelicula", Pelicula.class);
+			xs.aliasField("año", Pelicula.class, "anyo");
 			lista_desde_xml = (List<Pelicula>) xs.fromXML(new FileInputStream("ficheros/Ev1/UD02/ej10.xml"));
 
 			lista_desde_xml.forEach(System.out::println);
