@@ -5,6 +5,6 @@
 	<classpathentry kind="lib" path="Librerias/kxml2-2.3.0.jar"/>
 	<classpathentry kind="lib" path="Librerias/xstream-1.4.2.jar"/>
 	<classpathentry kind="lib" path="Librerias/gson-2.8.6.jar"/>
-	<classpathentry kind="lib" path="mysql-connector/mysql-connector-java-8.0.30.jar"/>
+	<classpathentry kind="lib" path="Librerias/mysql-connector-java-8.0.18.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

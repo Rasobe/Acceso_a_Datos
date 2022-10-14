@@ -4,8 +4,7 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
-import java.util.IllegalFormatCodePointException;
-import java.util.Scanner;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,7 +22,7 @@ public class ConsultaSocio extends JFrame {
 	static int posicion = 1;
 
 	public ConsultaSocio() {
-		this.setTitle("B�squeda de Socios por localidad");
+		this.setTitle("Busqueda de Socios por localidad");
 		contenedor = this.getContentPane();
 		contenedor.setLayout(null);
 
@@ -43,7 +42,7 @@ public class ConsultaSocio extends JFrame {
 		etiq5 = new JLabel("Localidad");
 		etiq6 = new JLabel(); // Le pondremos texto despues, cuando mostremos el conteo
 		etiq7 = new JLabel("cm.");
-		etiq8 = new JLabel("a�os");
+		etiq8 = new JLabel("años");
 
 		// A�adimos los elementos al contenedor y lo posicionamos
 		boton1 = new JButton("Anterior");
@@ -137,6 +136,13 @@ public class ConsultaSocio extends JFrame {
 			try {
 				if (rs != null) {
 
+					boton1.setEnabled(true);
+					boton2.setEnabled(true);
+					
+					rs.last();
+					ultimo = rs.getRow();
+					rs.first();
+					
 					if (event.getSource() == boton3) { // Buscar
 						posicion = 1;
 						etiq6.setText("Socio " + posicion + " de " + ultimo);
@@ -217,7 +223,15 @@ public class ConsultaSocio extends JFrame {
 			}
 
 			if (event.getSource() == btEliminar) {
-				abd.eliminarSocio(Integer.valueOf(JOptionPane.showInputDialog(null, "Introduce la ID del socio que quieras eliminar:")));
+				abd.eliminarSocio(Integer.valueOf(caja1.getText()));
+				caja1.setText("");
+				caja2.setText("");
+				caja3.setText("");
+				caja4.setText("");
+				caja5.setText("");
+				caja6.setText("");
+				etiq6.setText("");
+				
 			}
 
 			if (event.getSource() == btActualizar) {
@@ -227,7 +241,7 @@ public class ConsultaSocio extends JFrame {
 					JOptionPane.showMessageDialog(null, "Tienen que estar todos los campos rellenados.", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
-					int id = Integer.valueOf(JOptionPane.showInputDialog(null, "Introduce la ID del socio que quieras actualizar"));
+					int id = Integer.valueOf(caja1.getText());
 					abd.actualizarSocio(id, caja2.getText(), Integer.valueOf(caja3.getText()), Integer.valueOf(caja4.getText()), caja5.getText());
 				}
 			}

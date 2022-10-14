@@ -57,41 +57,37 @@ public class AccesoBdatos {
 	// Ademas despues contaremos el numero de socios(filas) del ResultSet en la
 	// interfaz
 
-	public ResultSet consultaLocalidad(String localidad) {
-		ResultSet salida = null;
-		if (!localidad.isEmpty()) { // Si localidad es distinto de vacio ejecuta lo de dentro
-			try {
-				Statement consulta = conecta.createStatement();
-				ResultSet reg = consulta.executeQuery("SELECT * FROM socio WHERE localidad like '" + localidad + "'");
-
-				if (reg.next()) {// Si hay siguiente quiere decir que ha encontrado coincidencias asi que
-									// devuelve el result set de esos socios
-					salida = reg;
-				} else {// Si no hay siguiente, quiere decir que no ha encontrado coincidencias, en ese
-						// caso devuelve null y pondremos que no hay coincidencias
-					salida = null;
-				}
-			} catch (SQLException sqle) {
-				System.out.println("Error en la consulta para mostrar socios que coincidan en localidad");
-			}
-		} else {// Si esta vacio ejecuta consulta que devuelva todos los usuarios
-			try {
-				Statement consulta = conecta.createStatement();
-				ResultSet reg = consulta.executeQuery("SELECT * FROM socio");
-
-				if (reg.next()) { // Si hay siguiente devolvera un result set con todos los socios
-					salida = reg;
-				} else {
-					salida = null; // Si no encuentra resultados, devolvera null (en este caso nunca se vera esto,
-									// por que en el unico caso de que devolviera null, seria que no funcionara la
-									// conexion, o la consulta este mal, en cuyo caso saltara un error)
-				}
-			} catch (SQLException sqle) {
-				System.out.println("Error en la consulta para mostrar todos los socios");
-			}
-		}
-		return salida;
-	}
+	public ResultSet consultaLocalidad(String localidad){
+        ResultSet salida = null;
+        if(localidad.isEmpty()==false) { //Si localidad es distinto de vacio ejecuta lo de dentro
+            try {
+            Statement consulta = conecta.createStatement();
+            ResultSet reg = consulta.executeQuery ("SELECT * FROM socio WHERE localidad like '" + localidad +"'");
+                
+            if (reg.next()) {//Si hay siguiente quiere decir que ha encontrado coincidencias asi que devuelve el result set de esos socios
+                salida = reg;
+            }else {//Si no hay siguiente, quiere decir que no ha encontrado coincidencias, en ese caso devuelve null y pondremos que no hay coincidencias
+                salida = null;
+            }
+            }catch(SQLException sqle) {
+                System.out.println("Error en la consulta para mostrar socios que coincidan en localidad");
+            }
+        }else {//Si esta vacio ejecuta consulta que devuelva todos los usuarios
+            try {
+                Statement consulta = conecta.createStatement();
+                ResultSet reg = consulta.executeQuery ("SELECT * FROM socio");
+                    
+                if (reg.next()) { //Si hay siguiente devolvera un result set con todos los socios
+                    salida = reg;
+                }else {
+                    salida = null; //Si no encuentra resultados, devolvera null (en este caso nunca se vera esto, por que en el unico caso de que devolviera null, seria que no funcionara la conexion, o la consulta este mal, en cuyo caso saltara un error)
+                }
+                }catch(SQLException sqle) {
+                    System.out.println("Error en la consulta para mostrar todos los socios");
+                }
+        }
+        return salida;
+    }
 	
 	public int anyadirSocio(String nombre, int estatura, int edad, String localidad) {
 		
