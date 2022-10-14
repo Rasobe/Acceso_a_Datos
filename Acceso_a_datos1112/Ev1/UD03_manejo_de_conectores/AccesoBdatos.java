@@ -1,5 +1,6 @@
 package UD03_manejo_de_conectores;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -61,9 +62,13 @@ public class AccesoBdatos {
         ResultSet salida = null;
         if(localidad.isEmpty()==false) { //Si localidad es distinto de vacio ejecuta lo de dentro
             try {
-            Statement consulta = conecta.createStatement();
-            ResultSet reg = consulta.executeQuery ("SELECT * FROM socio WHERE localidad like '" + localidad +"'");
+//            Statement consulta = conecta.createStatement();
+//            ResultSet reg = consulta.executeQuery ("SELECT * FROM socio WHERE localidad like '" + localidad +"'");
                 
+            CallableStatement consulta = conecta.prepareCall("call llamarPorLocalidad(?)");
+            consulta.setString(1, localidad);
+            ResultSet reg = consulta.executeQuery();
+            	
             if (reg.next()) {//Si hay siguiente quiere decir que ha encontrado coincidencias asi que devuelve el result set de esos socios
                 salida = reg;
             }else {//Si no hay siguiente, quiere decir que no ha encontrado coincidencias, en ese caso devuelve null y pondremos que no hay coincidencias
@@ -72,7 +77,7 @@ public class AccesoBdatos {
             }catch(SQLException sqle) {
                 System.out.println("Error en la consulta para mostrar socios que coincidan en localidad");
             }
-        }else {//Si esta vacio ejecuta consulta que devuelva todos los usuarios
+        } else {//Si esta vacio ejecuta consulta que devuelva todos los usuarios
             try {
                 Statement consulta = conecta.createStatement();
                 ResultSet reg = consulta.executeQuery ("SELECT * FROM socio");
