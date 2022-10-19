@@ -33,6 +33,7 @@ public class AccesoBdatos {
 			Class.forName(driver);
 			conecta = DriverManager.getConnection(url, username, password); // Cuando ejecutemos conectar, iniciaremos
 																			// todos los pasos para conectar
+			conecta.setAutoCommit(false);
 		} catch (ClassNotFoundException cnf) {
 			System.out.println("Clase driver no encontrada");
 		} catch (SQLException sqle) {
@@ -44,6 +45,7 @@ public class AccesoBdatos {
 		try {
 			if (conecta != null) { // Si en conecta hay algo, entonces desconecta. Con esto tenemos un metodo que
 									// cierre la conexion
+				conecta.setAutoCommit(true);
 				conecta.close();
 			}
 		} catch (SQLException sqle) {
@@ -105,8 +107,15 @@ public class AccesoBdatos {
 			ps.setInt(3, estatura);
 			ps.setInt(4, edad);
 			ps.setString(5, localidad);
-			return ps.executeUpdate();
+			int resultado = ps.executeUpdate();
+			conecta.commit();
+			return resultado;
 		} catch (SQLException e) {
+			try {
+				conecta.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			return 0;
 		}
 
@@ -129,7 +138,6 @@ public class AccesoBdatos {
 		}
 		return id + 1;
 	}
-	
 	public void eliminarSocio(int id) {
 		PreparedStatement ps;
 		ResultSet rs;
@@ -137,8 +145,14 @@ public class AccesoBdatos {
 			ps = conecta.prepareStatement("delete from socio where socioID = ?");
 			ps.setInt(1, id);
 			ps.executeUpdate();
+			conecta.commit();
 			JOptionPane.showMessageDialog(null, "Socio eliminado correctamente!", "Eliminado correctamente", JOptionPane.INFORMATION_MESSAGE);
 		} catch (SQLException e) {
+			try {
+				conecta.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			JOptionPane.showMessageDialog(null, "No se pudo eliminar el socio", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
@@ -153,17 +167,22 @@ public class AccesoBdatos {
 			ps.setInt(3, edad);
 			ps.setString(4, localidad);
 			ps.setInt(5, id);
-			if (ps.executeUpdate() >= 1) {
+			int resultado = ps.executeUpdate();
+			conecta.commit();
+			if (resultado >= 1) {
 				JOptionPane.showMessageDialog(null, "Socio con id " + id + " actualizado correctamente", "Actualización exitosa", JOptionPane.INFORMATION_MESSAGE);
 			} else {
 				JOptionPane.showMessageDialog(null, "No se ha podido actualizar ningún socio", "Error al actualizar", JOptionPane.ERROR_MESSAGE);				
 			}
 			
-			
-			
 		} catch (SQLException e) {
-			e.getMessage();
+			try {
+				conecta.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		}
+		
 	}
 
 }
