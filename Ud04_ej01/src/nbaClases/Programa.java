@@ -22,21 +22,25 @@ public class Programa {
 		SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 		Session session = sf.openSession();
 
-		String consultaTemporadaJugadorPorId = "FROM jugadores join estadisticas on jugadores.codigo = estadisticas.jugador where jugador.codigo = :id";
+		String consultaTemporadaJugadorPorId = "FROM Jugadores j, Estadisticas e where j.codigo = e.jugadores.codigo and j.codigo = :id";
 
 		Query q = session.createQuery(consultaTemporadaJugadorPorId);
 		q.setInteger("id", codigo);
 		
-		List<Estadisticas> lista = q.list();
+		List<Object[]> lista = q.list();
 		
-		lista.forEach(System.out::println);
-		
-		
-		Jugadores jugador = (Jugadores) session.get(Jugadores.class, codigo);
-		
-		
-		
-		System.out.println(jugador.getNombre());
+		for (int i = 0; i < lista.size(); i++) {
+			Object[] fila = lista.get(i);
+			Jugadores j = (Jugadores) fila[0];
+			Estadisticas e = (Estadisticas) fila[1];
+			
+			if (i == 0) {
+				System.out.printf("DATOS DEL JUGADOR: %d%nNombre: %s%nEquipo: %s%nTemporada\tPtos\tAsis\tTap\tReb%n", j.getCodigo(), j.getNombre(), j.getEquipos().getNombre());
+				System.out.println("=================================================");
+			}
+			System.out.printf("%s%n", e.getId().getTemporada());
+			
+		}
 
 		// DESCONECTAR
 		sf.close();
