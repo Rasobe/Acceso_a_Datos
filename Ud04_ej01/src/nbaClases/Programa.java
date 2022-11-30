@@ -38,12 +38,15 @@ public class Programa {
 				System.out.printf("DATOS DEL JUGADOR: %d%nNombre: %s%nEquipo: %s%nTemporada\tPtos\tAsis\tTap\tReb%n", j.getCodigo(), j.getNombre(), j.getEquipos().getNombre());
 				System.out.println("=================================================");
 			}
-			System.out.printf("%s%n", e.getId().getTemporada());
+			System.out.printf("%s\t\t%.1f\t%.1f\t%.1f\t%.1f %n", e.getId().getTemporada(), e.getPuntosPorPartido(), e.getAsistenciasPorPartido(), e.getTaponesPorPartido(), e.getRebotesPorPartido());
 			
 		}
+		System.out.println("=================================================");
+		System.out.println("Num de registros: " + lista.size());
+		System.out.println("=================================================");
 
 		// DESCONECTAR
-		sf.close();
+		session.close();
 	}
 
 }
