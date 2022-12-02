@@ -29,7 +29,9 @@ public class Programa {
 		
 //		guardarOactualizar(new Empleados((short)2, (Departamentos) s.get(Departamentos.class, (byte)30), "ANGARONA", "BRONCE", (short)7839, new Date(), (float) 1000.12, null));
 		
-		precedimientoPorId(id);
+//		precedimientoPorId(id);
+		
+		System.out.println(recogerEmpleadoId(id).getApellido());
 		
 //		for (Object[] o : obtenerListaConXColumnas()) {
 //			System.out.println(o[0] + " - " + o[1] + " - " + o[2] + " - " + o[3]);
@@ -158,6 +160,10 @@ public class Programa {
 			}
 			System.out.println();
 		}
+	}
+	
+	public static Empleados recogerEmpleadoId(short id) {
+		return (Empleados) s.createSQLQuery("call recogerEmpleadoId(:id)").addEntity(Empleados.class).setShort("id", id).uniqueResult();
 	}
 
 }
