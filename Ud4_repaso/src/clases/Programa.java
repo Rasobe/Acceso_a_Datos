@@ -27,9 +27,9 @@ public class Programa {
 
 //		actualizarEmpleado(new Empleados((short)2, (Departamentos) s.get(Departamentos.class, (byte)30), "ANGARONA", "SSL", (short)7839, new Date(), (float) 9000.12, null));
 		
-//		guardarOactualizar(new Empleados((short)1, (Departamentos) s.get(Departamentos.class, (byte)30), "RABOSA", "SSL", (short)7839, new Date(), (float) 5544.12, null));
+//		guardarOactualizar(new Empleados((short)2, (Departamentos) s.get(Departamentos.class, (byte)30), "ANGARONA", "BRONCE", (short)7839, new Date(), (float) 1000.12, null));
 		
-//		precedimientoPorId(id);
+		precedimientoPorId(id);
 		
 //		for (Object[] o : obtenerListaConXColumnas()) {
 //			System.out.println(o[0] + " - " + o[1] + " - " + o[2] + " - " + o[3]);
@@ -39,7 +39,7 @@ public class Programa {
 //			System.out.println(e.getEmpNo() + " - " + e.getApellido() + " - " + e.getOficio() + " - " + e.getComision() + " - " + e.getDir() + " - " + e.getSalario() + " - " + e.getDepartamentos().getDnombre() + " - " + e.getFechaAlt());
 //		}
 		
-		todosDepartamentosConSusEmpleados();
+//		todosDepartamentosConSusEmpleados();
 
 		s.close();
 		sf.close();
@@ -136,7 +136,7 @@ public class Programa {
 	}
 	
 	public static void precedimientoPorId(short id) {
-		Object[] objeto = (Object[]) s.createSQLQuery("call llamarEmpPorId(:id)").setShort("id", id).uniqueResult();
+		Object[] objeto = (Object[]) s.createSQLQuery("call llamarEmpId(:id)").setShort("id", id).uniqueResult();
 		System.out.println(objeto[0] + " - " +  objeto[1] + " - " +objeto[2] + " - " + objeto[3]);
 	}
 	
