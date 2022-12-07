@@ -98,13 +98,14 @@ public class AccesoBdatos {
 	}
 
 	public void pregunta5() {
-		System.out.println(
-				"Productos distintos: " + session.createQuery("select count(*) from Producto").uniqueResult() + "\n");
 
-		List<Object[]> listaProductos = session.createQuery("select p.nombreCorto, count(s.tienda), s.unidades "
+		List<Object[]> listaProductos = session.createQuery("select p.nombreCorto, count(s.tienda), sum(s.unidades	) "
 				+ "from Producto p, Stock s where p.cod = s.producto group by p.nombreCorto order by p.nombreCorto")
 				.list();
 
+		System.out.println(
+				"Productos distintos: " + listaProductos.size() + "\n");
+		
 		for (Object[] o : listaProductos) {
 			System.out.println("Producto: " + o[0] + ", disponible en " + o[1] + " tienda(s), total Unidades " + o[2]);
 		}

@@ -12,7 +12,7 @@ public class Main {
 		
 //		System.out.println(abd.pregunta1(null, "123456")); // false
 //		System.out.println(abd.pregunta1("", "123456")); // false
-//		System.out.println(abd.pregunta1("SUCURSAL3", "123456"));// true y la inserta
+		System.out.println(abd.pregunta1("SUCURSadsfAL3", "1adf23456"));// true y la inserta
 	//-------------------------------------------------------------------------------
 //		System.out.println(abd.pregunta2(1, "858576"));// true y la modifica
 	//-------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ public class Main {
 //		abd.pregunta4("3DSNG", 3);
 		//Total unidades del producto 3DSNG en la tienda 3 --> 0
 	//----------------------------------------------------------------------------------
-//		abd.pregunta5();
+		abd.pregunta5();
 		/*
 		 Productos distintos: 26
 
@@ -35,7 +35,7 @@ public class Main {
 			Producto: Toshiba SD16GB Class10 Jewel Case, disponible en 1 tienda(s), total Unidades 2
 		 */
 	//-----------------------------------
-		abd.pregunta6();
+//		abd.pregunta6();
 		/*
 		 	Producto (nombre corto) -       Precio -  Familia
 			=================================================
