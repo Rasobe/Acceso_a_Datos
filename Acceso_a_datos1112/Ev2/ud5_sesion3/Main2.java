@@ -33,9 +33,9 @@ public class Main2 {
 		
 	//	abd.imprimirDepartamento(10);
 	
-//	abd.demoJPQL();
+//		abd.demoJPQL();
 		
-		abd.nombreAltaTodosEmpleadosCarrera();
+		System.out.println(abd.borrarDepartamento(10));
 		
 		abd.desconectar();
 	

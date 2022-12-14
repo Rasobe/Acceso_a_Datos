@@ -2,6 +2,7 @@ package ud5_sesion3;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -94,7 +95,7 @@ public class AccesoBdatos {
 	// pero el resto de los atributos del departamento a null. Por eso no dejo
 	// borrar
 
-	public boolean borrarDepartamento(int numDepartamento) {
+	public boolean borrarDepartamentoUbu(int numDepartamento) {
 		DepartamentoEntity departamentoBuscado = buscarDepartamento(numDepartamento);
 		if (departamentoBuscado == null || !departamentoBuscado.getEmpleados().isEmpty())
 			return false;
@@ -133,25 +134,20 @@ public class AccesoBdatos {
 		for (Object[] r4 : l4) {
 			System.out.println("Nombre :  " + r4[0] + ", Localidad: " + r4[1]);
 		}
-		
-		
+
 		// EJERCICIO 8
-		
-		
-		
-		
 
 	}// de demoJPQL
 //--------------------------------------------------------------------------------------------------------------
-	
-	public void nombreAltaTodosEmpleados() {
+
+	public void ejercicio01() {
 		List<Object[]> listaEmpleados = em.createQuery("select nombre, alta from EmpleadoEntity").getResultList();
 		for (Object[] o : listaEmpleados) {
 			System.out.println(o[0] + " - " + o[1]);
 		}
 	}
-	
-	public void nombreAltaTodosEmpleadosCarrera() {
+
+	public void ejercicio02() {
 		List<Object[]> listaEmpleados = em.createQuery("select nombre, alta from EmpleadoEntity").getResultList();
 		for (Object[] o : listaEmpleados) {
 			if (o[0].toString().toLowerCase().contains("carrera")) {
@@ -160,4 +156,123 @@ public class AccesoBdatos {
 		}
 	}
 
+	public void ejercicio03() {
+		List<Object[]> lista = em.createQuery("select nombre, oficio, departamento.nombre from EmpleadoEntity where departamento.nombre like 'I+D' and oficio like 'Empleado'").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1] + " - " + o[2]);
+		}
+	}
+	
+	public void ejercicio04() {
+		List<Object[]> lista = em.createQuery("select nombre, alta from EmpleadoEntity where year(alta) >= 2003").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1]);
+		}
+	}
+
+	public void ejercicio05() {
+		List<Object[]> lista = em.createQuery("select departamento.nombre, nombre from EmpleadoEntity where departamento.nombre is not null order by departamento.nombre").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1]);
+		}
+	}
+	
+	public void ejercicio06() {
+		List<Object[]> lista = em.createQuery("select departamento.nombre, count(nombre), sum(salario), max(salario) from EmpleadoEntity group by departamento.nombre").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1] + " - " + o[2] + " - " + o[3]);
+		}
+	}
+	
+	public void ejercicio07() {
+		List<Object[]> lista = em.createQuery("select departamento.nombre, count(nombre), sum(salario), max(salario) from EmpleadoEntity group by departamento.nombre having count(nombre) >= 5").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1] + " - " + o[2] + " - " + o[3]);
+		}
+	}
+	
+	public void ejercicio08() {
+		List<Object[]> lista = em.createQuery("select nombre, dirId.nombre, departamento.dptoId from EmpleadoEntity where dirId.nombre is not null").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1] + " - " + o[2]);
+		}
+	}
+	
+	public void ejercicio09() {
+		List<Object[]> lista = em.createQuery("select departamento.nombre, count(nombre) from EmpleadoEntity group by departamento.nombre having count(nombre) > 0").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1]);
+		}
+	}
+	
+	public void ejercicio09_2() {
+		List<Object[]> lista = em.createQuery("select d.nombre, count(e) from DepartamentoEntity d join d.empleados e group by d.nombre").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1]);
+		}
+	}
+	
+	public void ejercicio10() {
+		List<Object[]> lista = em.createQuery("select d.nombre, count(e) from DepartamentoEntity d left join d.empleados e group by d.nombre").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1]);
+		}
+	}
+	
+	public void ejercicio11() {
+		List<Object[]> lista = em.createQuery("select departamento.dptoId, nombre, salario from EmpleadoEntity order by departamento.dptoId desc, salario asc").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1] + " - " + o[2]);
+		}
+	}
+	
+	public void ejercicio12() {
+		List<Object[]> lista = em.createQuery("select empnoId, nombre from EmpleadoEntity where dirId is null").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1]);
+		}
+	}
+	
+	public void ejercicio13() {
+		List<Object[]> lista = em.createQuery("select dptoId, nombre from DepartamentoEntity where empleados.empnoId = 1039").getResultList();
+		for (Object[] o : lista) {
+			System.out.println(o[0] + " - " + o[1]);
+		}
+	}
+	
+	public int incrementarSalario (int cantidad) {
+		em.getTransaction().begin();
+		int numActualizaciones = em.createQuery("update EmpleadoEntity set salario = salario + :salario").setParameter("salario", cantidad).executeUpdate();
+		em.getTransaction().commit();
+		return numActualizaciones ;
+	}
+	
+	public int incrementarSalarioOficio (String oficio, int cantidad) {
+		em.getTransaction().begin();
+		int numActualizaciones = em.createQuery("update EmpleadoEntity set salario = salario + :salario where oficio like :oficio").setParameter("salario", cantidad).setParameter("oficio", oficio).executeUpdate();
+		em.getTransaction().commit();
+		return numActualizaciones ;
+	}
+	
+	public int incrementarSalarioDepartamento (int numDepartamento, int cantidad) {
+		em.getTransaction().begin();
+		int numActualizaciones = em.createQuery("update EmpleadoEntity e set e.salario = e.salario + :salario where e.departamento.getDptoId() = :numDepartamento").setParameter("salario", cantidad).setParameter("numDepartamento", numDepartamento).executeUpdate();
+		em.getTransaction().commit();
+		return numActualizaciones ;
+	}
+	
+	public int borrarEmpleado (int numEmpleado) {
+		em.getTransaction().begin();
+		int numEliminaciones = em.createQuery("delete from EmpleadoEntity where empnoId = :id").setParameter("id", numEmpleado).executeUpdate();
+		em.getTransaction().commit();
+		return numEliminaciones;
+	}
+	
+	public int borrarDepartamento(int numDepartamento) {
+		em.getTransaction().begin();
+		int numEliminaciones = em.createQuery("delete from DepartamentoEntity where dptoId = :id").setParameter("id", numDepartamento).executeUpdate();
+		em.getTransaction().commit();
+		return numEliminaciones;
+	}
+	
 } // de la clase
