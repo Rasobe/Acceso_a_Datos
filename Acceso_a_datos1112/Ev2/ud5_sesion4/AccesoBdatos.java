@@ -32,19 +32,40 @@ public class AccesoBdatos {
 			System.out.println(socio);
 		}
 	}
-	
+
 	public List<Socio> listaSociosPorLocalidad(String localidad) {
 		socioRecogido = 0;
-		listaSocios = em.createQuery("select s from Socio s where s.localidad like :localidad").setParameter("localidad", localidad).getResultList();
+		listaSocios = em.createQuery("select s from Socio s where s.localidad like :localidad")
+				.setParameter("localidad", localidad).getResultList();
+		listaSocios.forEach(System.out::println);
 		return listaSocios;
 	}
-	
+
 	public Socio pasarAlSiguiente() {
 		System.out.println(socioRecogido);
-		if (socioRecogido < listaSocios.size()) {
+		if (socioRecogido < listaSocios.size() - 1) {
 			socioRecogido++;
 		}
 		return listaSocios.get(socioRecogido);
+	}
+
+	public Socio pasarAlAnterior() {
+		System.out.println(socioRecogido);
+		if (socioRecogido > 0) {
+			socioRecogido--;
+		}
+		return listaSocios.get(socioRecogido);
+	}
+
+	public void anyadirSocio(Socio s) {
+		s.setSocioId(ultimaIdDisponible());
+		em.getTransaction().begin();
+		em.persist(s);
+		em.getTransaction().commit();
+	}
+
+	public int ultimaIdDisponible() {
+		return (int) em.createQuery("select max(socioId) from Socio").getSingleResult();
 	}
 
 } // de la clase

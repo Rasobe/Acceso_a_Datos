@@ -1,6 +1,5 @@
 package ud5_sesion4;
 
-
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -133,13 +132,15 @@ public class ConsultaSocio extends JFrame {
 
 			if (event.getSource().equals(botonBuscar)) {
 				if (cajaBuscar.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Debes introducir una localidad para buscar.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Debes introducir una localidad para buscar.", "Error",
+							JOptionPane.ERROR_MESSAGE);
 				} else {
 					listaSociosPorLocalidad = abd.listaSociosPorLocalidad(cajaBuscar.getText());
 					if (listaSociosPorLocalidad.size() == 0) {
 						JOptionPane.showMessageDialog(null, "No se han encontrado socios en esta localidad");
 					} else {
-						etiqNumSociosLista.setText("Socio " + (abd.socioRecogido + 1) + " de " + listaSociosPorLocalidad.size());
+						etiqNumSociosLista
+								.setText("Socio " + (abd.socioRecogido + 1) + " de " + listaSociosPorLocalidad.size());
 						Socio socio = listaSociosPorLocalidad.get(abd.socioRecogido);
 						cajaId.setText(String.valueOf(socio.getSocioId()));
 						cajaNombre.setText(socio.getNombre());
@@ -152,7 +153,7 @@ public class ConsultaSocio extends JFrame {
 					}
 				}
 			}
-			
+
 			if (event.getSource().equals(botonSiguiente)) {
 				Socio socio = abd.pasarAlSiguiente();
 				cajaId.setText(String.valueOf(socio.getSocioId()));
@@ -161,13 +162,43 @@ public class ConsultaSocio extends JFrame {
 				cajaEdad.setText(String.valueOf(socio.getEdad()));
 				cajaLocalidad.setText(socio.getLocalidad());
 				cajaBuscar.setText("");
-				etiqNumSociosLista.setText("Socio " + (abd.socioRecogido + 1) + " de " + listaSociosPorLocalidad.size());
+				etiqNumSociosLista
+						.setText("Socio " + (abd.socioRecogido + 1) + " de " + listaSociosPorLocalidad.size());
 			}
-			
+
+			if (event.getSource().equals(botonAnterior)) {
+				Socio socio = abd.pasarAlAnterior();
+				cajaId.setText(String.valueOf(socio.getSocioId()));
+				cajaNombre.setText(socio.getNombre());
+				cajaEstatura.setText(String.valueOf(socio.getEstatura()));
+				cajaEdad.setText(String.valueOf(socio.getEdad()));
+				cajaLocalidad.setText(socio.getLocalidad());
+				cajaBuscar.setText("");
+				etiqNumSociosLista
+						.setText("Socio " + (abd.socioRecogido + 1) + " de " + listaSociosPorLocalidad.size());
+			}
+
+			if (event.getSource().equals(botonAnyadir)) {
+				if (cajaNombre.getText().isEmpty() && cajaEdad.getText().isEmpty() && cajaEstatura.getText().isEmpty()
+						&& cajaLocalidad.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "No puede haber un campo vacío. Rellena todos.", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					if (cajaEdad.getText().matches("[\\D]+") || cajaEstatura.getText().matches("[\\D]+")) {
+						JOptionPane.showMessageDialog(null, "No pueden haber letras en un campo de solo digitos.", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
+						Socio s = new Socio(0, cajaNombre.getText(), Integer.parseInt(cajaEstatura.getText()),
+								Integer.parseInt(cajaEdad.getText()), cajaLocalidad.getText());
+						abd.anyadirSocio(s);
+					}
+				}
+			}
+
 			abd.desconectar();
 		}
 	}
-		
+
 	public static void main(String[] args) {
 		ConsultaSocio ventana = new ConsultaSocio();
 
