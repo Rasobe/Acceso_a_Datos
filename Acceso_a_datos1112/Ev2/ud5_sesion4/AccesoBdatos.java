@@ -13,6 +13,8 @@ import javax.persistence.Persistence;
 public class AccesoBdatos {
 	private EntityManagerFactory emf;
 	private EntityManager em;
+	public static List<Socio> listaSocios = new ArrayList<>();
+	public static int socioRecogido;
 
 	public void conectar() {
 		emf = Persistence.createEntityManagerFactory("db/socios.odb");
@@ -25,14 +27,24 @@ public class AccesoBdatos {
 	}
 
 	public void recorrerTodaLista() {
-		List<Socio> lista = em.createQuery("select s from Socio s").getResultList();
-		for (Socio socio : lista) {
+		listaSocios = em.createQuery("select s from Socio s").getResultList();
+		for (Socio socio : listaSocios) {
 			System.out.println(socio);
 		}
 	}
 	
 	public List<Socio> listaSociosPorLocalidad(String localidad) {
-		return em.createQuery("select s from Socio s where s.localidad like :localidad").setParameter("localidad", localidad).getResultList();
+		socioRecogido = 0;
+		listaSocios = em.createQuery("select s from Socio s where s.localidad like :localidad").setParameter("localidad", localidad).getResultList();
+		return listaSocios;
+	}
+	
+	public Socio pasarAlSiguiente() {
+		System.out.println(socioRecogido);
+		if (socioRecogido < listaSocios.size()) {
+			socioRecogido++;
+		}
+		return listaSocios.get(socioRecogido);
 	}
 
 } // de la clase

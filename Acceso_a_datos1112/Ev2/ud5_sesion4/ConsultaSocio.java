@@ -15,10 +15,10 @@ import javax.swing.JTextField;
 public class ConsultaSocio extends JFrame {
 
 	Container contenedor;
-	JButton botonSiguiente, botonAnterior, botonBuscar, botonAnyadir, botonEliminar, botonActualizar;
+	JButton botonAnterior, botonSiguiente, botonBuscar, botonAnyadir, botonEliminar, botonActualizar;
 	JTextField cajaId, cajaNombre, cajaEstatura, cajaEdad, cajaLocalidad, cajaBuscar;
 	JLabel etiqId, etiqNombre, etiqEstatura, etiqEdad, etiqLocalidad, etiqNumSociosLista, etiqCm, etiqAnyos;
-	static int contador;
+	public static List<Socio> listaSociosPorLocalidad;
 
 	public ConsultaSocio() {
 		this.setTitle("Busqueda de Socios por localidad");
@@ -44,17 +44,17 @@ public class ConsultaSocio extends JFrame {
 		etiqAnyos = new JLabel("años");
 
 		// A�adimos los elementos al contenedor y lo posicionamos
-		botonSiguiente = new JButton("Anterior");
-		contenedor.add(botonSiguiente);
-		botonSiguiente.setBounds(120, 295, 85, 20);
-		botonSiguiente.addActionListener(new OyenteBoton());
-		botonSiguiente.setEnabled(false);
-
-		botonAnterior = new JButton("Siguiente");
+		botonAnterior = new JButton("Anterior");
 		contenedor.add(botonAnterior);
-		botonAnterior.setBounds(275, 295, 90, 20);
+		botonAnterior.setBounds(120, 295, 85, 20);
 		botonAnterior.addActionListener(new OyenteBoton());
 		botonAnterior.setEnabled(false);
+
+		botonSiguiente = new JButton("Siguiente");
+		contenedor.add(botonSiguiente);
+		botonSiguiente.setBounds(275, 295, 90, 20);
+		botonSiguiente.addActionListener(new OyenteBoton());
+		botonSiguiente.setEnabled(false);
 
 		botonBuscar = new JButton("Buscar");
 		contenedor.add(botonBuscar);
@@ -125,8 +125,6 @@ public class ConsultaSocio extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	}
-	
-	
 
 	class OyenteBoton implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
@@ -137,33 +135,39 @@ public class ConsultaSocio extends JFrame {
 				if (cajaBuscar.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Debes introducir una localidad para buscar.", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
-					List<Socio> lista = abd.listaSociosPorLocalidad(cajaBuscar.getText());
-					if (lista.size() == 0) {
+					listaSociosPorLocalidad = abd.listaSociosPorLocalidad(cajaBuscar.getText());
+					if (listaSociosPorLocalidad.size() == 0) {
 						JOptionPane.showMessageDialog(null, "No se han encontrado socios en esta localidad");
 					} else {
-						contador = 1;
-						etiqNumSociosLista.setText("Socio " + contador + " de " + lista.size());
-						Socio socio = lista.get(0);
+						etiqNumSociosLista.setText("Socio " + (abd.socioRecogido + 1) + " de " + listaSociosPorLocalidad.size());
+						Socio socio = listaSociosPorLocalidad.get(abd.socioRecogido);
 						cajaId.setText(String.valueOf(socio.getSocioId()));
 						cajaNombre.setText(socio.getNombre());
 						cajaEstatura.setText(String.valueOf(socio.getEstatura()));
 						cajaEdad.setText(String.valueOf(socio.getEdad()));
 						cajaLocalidad.setText(socio.getLocalidad());
 						cajaBuscar.setText("");
-						botonAnterior.setEnabled(true);
 						botonSiguiente.setEnabled(true);
+						botonAnterior.setEnabled(true);
 					}
 				}
 			}
 			
 			if (event.getSource().equals(botonSiguiente)) {
-				
+				Socio socio = abd.pasarAlSiguiente();
+				cajaId.setText(String.valueOf(socio.getSocioId()));
+				cajaNombre.setText(socio.getNombre());
+				cajaEstatura.setText(String.valueOf(socio.getEstatura()));
+				cajaEdad.setText(String.valueOf(socio.getEdad()));
+				cajaLocalidad.setText(socio.getLocalidad());
+				cajaBuscar.setText("");
+				etiqNumSociosLista.setText("Socio " + (abd.socioRecogido + 1) + " de " + listaSociosPorLocalidad.size());
 			}
 			
 			abd.desconectar();
 		}
 	}
-
+		
 	public static void main(String[] args) {
 		ConsultaSocio ventana = new ConsultaSocio();
 
